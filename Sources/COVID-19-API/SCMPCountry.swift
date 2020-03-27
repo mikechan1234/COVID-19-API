@@ -35,12 +35,6 @@ public struct SCMPCountry: SCMPCOVID19Entry, Identifiable {
     public var lastUpdated: Date?
     public var comments: String?
     
-    static public func random() -> SCMPCountry {
-        
-        SCMPCountry(id: "", name: String.randomString(length: 8), cases: .random(in: 0...10000), deaths: .random(in: 0...10000), recovered: .random(in: 0...100000), lastUpdated: nil, comments: nil)
-        
-    }
-    
 }
 
 //Codable Extension
@@ -54,6 +48,10 @@ extension SCMPCountry: Codable {
         case recovered
         case lastUpdated
         case comments
+        
+    }
+    
+    public init() {
         
     }
     
@@ -87,16 +85,6 @@ extension SCMPCountry: Codable {
             
         comments = try? container.decode(String.self, forKey: .comments)
         
-    }
-    
-}
-
-
-extension String {
-    
-    static func randomString(length: Int) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
 }
