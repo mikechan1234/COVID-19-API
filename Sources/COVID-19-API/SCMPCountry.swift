@@ -35,6 +35,18 @@ public struct SCMPCountry: SCMPCOVID19Entry, Identifiable {
     public var lastUpdated: Date?
     public var comments: String?
     
+    public init(id: String, name: String, cases: Int, deaths: Int, recovered: Int, lastUpdated: Date?, comments: String?) {
+        
+        self.id = id
+        self.name = name
+        self.cases = cases
+        self.deaths = deaths
+        self.recovered = recovered
+        self.lastUpdated = lastUpdated
+        self.comments = comments
+        
+    }
+    
 }
 
 //Codable Extension
@@ -48,10 +60,6 @@ extension SCMPCountry: Codable {
         case recovered
         case lastUpdated
         case comments
-        
-    }
-    
-    public init() {
         
     }
     
